@@ -1,0 +1,7 @@
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: rgb(244,244,244)
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-effect: null;
+}

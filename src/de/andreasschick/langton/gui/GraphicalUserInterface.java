@@ -1,23 +1,40 @@
 package de.andreasschick.langton.gui;
 
+import de.andreasschick.langton.application.Ant;
+import de.andreasschick.langton.application.Position;
+import de.andreasschick.langton.application.StatisticalAnalysisEngine;
+import de.andreasschick.langton.application.TemplatingEngine;
+import de.andreasschick.langton.hsqldb.HSQLDB;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
+import javafx.scene.input.*;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.math.RoundingMode;
+import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GraphicalUserInterface extends Application {
 
     private final Logger log = LogManager.getLogger(this.getClass());
+    private StatisticalAnalysisEngine statAnalyser;
+    private TemplatingEngine templatingEngine;
+    private de.andreasschick.langton.application.Application application;
+    private final short OFFSET_APPLICATIONID = 1;
 
     public static void main(String[] args) {
         launch(args);
@@ -25,122 +42,331 @@ public class GraphicalUserInterface extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //Loading the fxml-file
+    	log.info("Starting GUI");
+        //Loading the FXML-file
         Parent root = FXMLLoader.load(getClass().getResource("GUI.fxml"));
+
         Scene scene = new Scene(root);
 
-        BorderPane canvasContainer = (BorderPane) scene.lookup("#canvasContainer");
+        application = HSQLDB.getInstance().getApplication(OFFSET_APPLICATIONID);
 
-        Canvas canvas = new Canvas();
-        canvas.setHeight(500);
-        canvas.setWidth(500);
-        canvas.setId("canvas");
-        canvasContainer.setCenter(canvas);
+        ScrollPane canvasContainer = (ScrollPane) scene.lookup("#canvasContainer");
 
+        ZoomableCanvas zoomableCanvas = new ZoomableCanvas(application.getTableauSize(), application.getTableauSize(), application.getNumberOfAnts());
+        zoomableCanvas.setId("#canvas");
+
+        SceneGestures sceneGestures = new SceneGestures(zoomableCanvas);
+        zoomableCanvas.addEventFilter(MouseEvent.MOUSE_PRESSED, sceneGestures.getOnMousePressedEventHandler());
+        zoomableCanvas.addEventFilter(MouseEvent.MOUSE_DRAGGED, sceneGestures.getOnMouseDraggedEventHandler());
+        zoomableCanvas.addEventFilter(ScrollEvent.ANY, sceneGestures.getOnScrollEventHandler());
+
+        canvasContainer.setContent(zoomableCanvas);
+        //resetGrid(zoomableCanvas);
 
         primaryStage.setTitle("Langton's Ant");
+        
+        setUpApplicationChoiceBox(scene);
 
         //Assigning Action to Refresh-Button
         Button btnRefresh = (Button) scene.lookup("#btnRefresh");
-        btnRefresh.setOnAction(event -> onRefreshClicked(scene));
+        btnRefresh.setOnAction(event -> onRefreshClicked(scene, zoomableCanvas));
 
+        Button centerGridButton = (Button) scene.lookup("#centerGridButton");
+        centerGridButton.setOnAction(event -> centerGrid(zoomableCanvas));
+
+        Button resetGridButton = (Button) scene.lookup("#resetGridButton");
+        resetGridButton.setOnAction(event -> resetGrid(zoomableCanvas));
+        
+        ChoiceBox<String> cbApplication = (ChoiceBox<String>)scene.lookup("#cbApplication");
+        cbApplication.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+        	public void changed(ObservableValue ov, Number value, Number new_value){
+        		int applicationId = new_value.intValue()+OFFSET_APPLICATIONID;
+        		try {
+					application = HSQLDB.getInstance().getApplication(applicationId);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+        		zoomableCanvas.setWidthOfWholeCanvas(application.getTableauSize());
+        		zoomableCanvas.setHeightOfWholeCanvas(application.getTableauSize());
+        		zoomableCanvas.setNumberOfAnts(application.getNumberOfAnts());
+        		setUpChoiceBox(scene);
+        	}
+		});
+
+
+
+        TreeView<String> treeView = (TreeView<String>) scene.lookup("#treeRules");
+        treeView.setOnDragDetected(event -> {
+            Dragboard db = treeView.startDragAndDrop(TransferMode.ANY);
+            ClipboardContent content = new ClipboardContent();
+            content.putString(String.valueOf(treeView.getSelectionModel().getSelectedIndex()));
+            db.setContent(content);
+            event.consume();
+        });
+
+        zoomableCanvas.setOnDragOver(event -> {
+            if(event.getGestureSource() == treeView && event.getDragboard().hasString()){
+                event.acceptTransferModes(TransferMode.ANY);
+            }
+            event.consume();
+        });
+
+        zoomableCanvas.setOnDragDropped(event -> {
+            Dragboard db = event.getDragboard();
+            boolean success = false;
+            if (db.hasString() && zoomableCanvas.isDrawn()){
+                switch (db.getString()){
+                    case "1":
+                        log.info("Searching for Pixels in halfs of canvas");
+                        templatingEngine.searchForPixelsInHalfs();
+                        break;
+                    case "2":
+                        log.info("Searching for template, defined in XML without numbers");
+                        templatingEngine.searchForXMLTemplate();
+                        break;
+                    case "3":
+                        log.info("Searching for template, defined in XML with numbers");
+                        templatingEngine.searchForXMLTemplateWithNumbers();
+                        break;
+                    case "4":
+                        log.info("Searching for longest drift to edges");
+                        templatingEngine.searchForLongestDrift();
+                        break;
+                    default:
+                        break;
+                }
+                success = true;
+            }
+            event.setDropCompleted(success);
+            event.consume();
+        });
+        
         //Giving choices to ChoiceBox and selecting the first entry of the choiceBox
         setUpChoiceBox(scene);
 
         //Setting entries for TreeView
         setUpTreeView(scene);
+        
+        
 
-        drawCanvas(scene);
-
+        //primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    private void drawCanvas(Scene scene) {
-        Canvas canvas = (Canvas) scene.lookup("#canvas");
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+    private void setUpApplicationChoiceBox(Scene scene) {
+		ChoiceBox<String> cbApplication = (ChoiceBox<String>)scene.lookup("#cbApplication");
+		List<de.andreasschick.langton.application.Application> applList = null;
+		
+		try {
+			applList = HSQLDB.getInstance().getAllApplications();
+		} catch (SQLException e) {
+			log.info(e.getMessage());
+		}
+		
+		List<String> items = new ArrayList<>();
+		
+		for (de.andreasschick.langton.application.Application appl : applList) {			
+			items.add(appl.getId() + " - " + appl.getMovementRule() + " - " + appl.getNumberOfAnts() + " Ant" + (appl.getNumberOfAnts() > 1 ? "s" : "") + " - Grid: " + appl.getTableauSize() + "x" + appl.getTableauSize());
+		}
+		
+		cbApplication.setItems(FXCollections.observableArrayList(items));
+		cbApplication.getSelectionModel().selectFirst();
+	}
 
-        //Testing purposes...
-        gc.setFill(Color.WHITE);
-        for (double x = 0; x < canvas.getWidth(); x += 0.25){
-            for (double y = 0; y < canvas.getHeight(); y += 0.25){
-                gc.fillRect(x,y,x+0.25,y+0.25);
-            }
-        }
-
-        gc.setFill(Color.BLACK);
-        gc.fillRect(canvas.getWidth()/2-5, canvas.getHeight()/2-5, 10, 10);
-    }
-
+	@SuppressWarnings("unchecked")
     private void setUpChoiceBox(Scene scene) {
-        ChoiceBox choiceBoxFocus = (ChoiceBox) scene.lookup("#choiceBoxFocus");
-        choiceBoxFocus.setItems(FXCollections.observableArrayList("all", "black", "red", "blue"));
+        ChoiceBox<String> choiceBoxFocus = (ChoiceBox<String>) scene.lookup("#choiceBoxFocus");
+        List<String> items = new ArrayList<>();
+        items.add("all");
+        if (application.getNumberOfAnts() >= 1) {
+            items.add("black");
+        }
+        if (application.getNumberOfAnts() >= 2) {
+            items.add("red");
+        }
+        if (application.getNumberOfAnts() >= 3) {
+            items.add("blue");
+        }
+        if (application.getNumberOfAnts() >= 4) {
+            items.add("orange");
+        }
+        choiceBoxFocus.setItems(FXCollections.observableArrayList(items));
         choiceBoxFocus.getSelectionModel().selectFirst();
     }
 
+    @SuppressWarnings("unchecked")
     private void setUpTreeView(Scene scene) {
-        TreeView treeRules = (TreeView) scene.lookup("#treeRules");
+        TreeView<String> treeRules = (TreeView<String>) scene.lookup("#treeRules");
 
-        TreeItem<String> rootItem = new TreeItem<>("Rules");
+        TreeItem<String> rootItem = new TreeItem<>("Templates");
 
-        rootItem.getChildren().add(new TreeItem<>("RLR\t\t\t\t\tgrows chaotically"));
-        rootItem.getChildren().add(new TreeItem<>("LLRR\t\t\t\t\tgrows symmetrically"));
-        rootItem.getChildren().add(new TreeItem<>("LRRRRRLLR\t\t\tfills space in a square around itself"));
-        rootItem.getChildren().add(new TreeItem<>("LLRRRLRLRLLR\t\t\tcreates a convoluted highway"));
-        rootItem.getChildren().add(new TreeItem<>("RRLLLRLLLRRR\t\t\tcreates a filled triangle shapethat grows and moves"));
-        rootItem.getChildren().add(new TreeItem<>("L2NNL1L2L1\t\t\thexagonal grid, grows circularly"));
-        rootItem.getChildren().add(new TreeItem<>("L1L2NUL2L1R2\t\thexagonal grid, spiral growth"));
+        rootItem.getChildren().add(new TreeItem<>("Split grid into two equal parts and detect symmetries"));
+        rootItem.getChildren().add(new TreeItem<>("XML-defined template, amount of visits not relevant"));
+        rootItem.getChildren().add(new TreeItem<>("XML-defined template, amount of visits relevant"));
+        rootItem.getChildren().add(new TreeItem<>("Longest drift to edges"));
 
         //Setting ChangeListener to TreeView using Lambda-Expression
         treeRules.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             TreeItem<String> selectedItem = (TreeItem<String>) newValue;
-            String selectedText = selectedItem.getValue().replaceAll("[ \t]*[a-z,]*", "");
+            //String selectedText = selectedItem.getValue().replaceAll("[ \t]*[a-z,]*", "");
 
         });
-        //Appending rootItem to TreeView and expanding it. Also selecting first rule (RLR) as standard
+        //Appending rootItem to TreeView and expanding it.
         treeRules.setRoot(rootItem);
         treeRules.getRoot().setExpanded(true);
         treeRules.getSelectionModel().select(1);
     }
 
-    private void onRefreshClicked(Scene scene){
+    @SuppressWarnings("unchecked")
+    private void onRefreshClicked(Scene scene, ZoomableCanvas zoomableCanvas) {
+    	ChoiceBox<String> cbApplication = (ChoiceBox<String>) scene.lookup("#cbApplication");
+    	int selectedIndex = cbApplication.getSelectionModel().getSelectedIndex();
+    	log.info("-----------------------------------------------------------");
+    	log.info("Selected Application with applicationId = " + selectedIndex);
+    	
         TextField txtNumberOfSteps = (TextField) scene.lookup("#txtNumberOfSteps");
         int numberOfSteps = -1;
         try {
             numberOfSteps = Integer.valueOf(txtNumberOfSteps.getText());
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             //Create alert if input on numberOfSteps is not a number
             generateAlert(Alert.AlertType.ERROR, "Error", "Input on number of steps is not a valid input", "Please enter a number");
         }
-
-        ChoiceBox choiceBoxFocus = (ChoiceBox) scene.lookup("#choiceBoxFocus");
+        
+        ChoiceBox<String> choiceBoxFocus = (ChoiceBox<String>) scene.lookup("#choiceBoxFocus");
         String focus = choiceBoxFocus.getSelectionModel().getSelectedItem().toString();
         String selectedRule = null;
+        log.info("Selected Focus: " + focus);
 
-        try{
-            TreeView treeRules = (TreeView) scene.lookup("#treeRules");
+        try {
+            TreeView<String> treeRules = (TreeView<String>) scene.lookup("#treeRules");
             selectedRule = treeRules.getSelectionModel().getSelectedItems().toString().substring(19).replaceAll("[ \t]*[a-z,]*", "").replace("]", "");
 
             //If rootItem is selected
-            if (selectedRule.equals("R")){
+            if (selectedRule.equals("R")) {
                 throw new Exception();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             //Create alert if input on treeView is not a valid rule
             generateAlert(Alert.AlertType.ERROR, "Error", "No rule selected or selected rule is invalid", "Please select a rule in Template register below");
         }
 
-        //System.out.println("Refresh clicked with numberOfSteps of: " + numberOfSteps + " and focus of: " + focus + " and selected rule of: " + selectedRule);
-        log.info("Refresh clicked with numberOfSteps of: " + numberOfSteps + " and focus of: " + focus + " and selected rule of: " + selectedRule);
+
+        List<Ant> ants = null;
+        try {
+            ants = HSQLDB.getInstance().getAllAnts(application.getId(), numberOfSteps);
+        } catch (SQLException e) {
+            generateAlert(Alert.AlertType.ERROR, "Error", "Couldn't get all Ants for Application 1", "Please try again");
+        }
+
+        log.info("Setting up and drawing Canvas");
+        zoomableCanvas.reset();
+        zoomableCanvas.initializeStateOfPixels(ants);
+        Platform.runLater(() -> zoomableCanvas.drawCanvas(zoomableCanvas.getMiddleX() - (int) zoomableCanvas.getWidth() / zoomableCanvas.getScale() / 2,
+                zoomableCanvas.getMiddleY() - (int) zoomableCanvas.getHeight() / zoomableCanvas.getScale() / 2));
+
+        
+        log.info("Running statistical Analysis");
+        try {
+            statAnalyser = new StatisticalAnalysisEngine(numberOfSteps, scene, application);
+            setUpRatioLeftAndRightTurns(scene);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        setUpTopFivePixels(scene, focus);
+        setUpPercentageCoverage(scene, focus);
+        setUpTopThreeHotspots(scene);
+
+
+        templatingEngine = new TemplatingEngine(scene);
 
     }
 
-    private void generateAlert(Alert.AlertType alertType, String title, String headerText, String contentText){
+    private void setUpTopFivePixels(Scene scene, String focus) {
+        final Position[] topFive = statAnalyser.getTopFivePixel(focus);
+        
+        BarChart<String, Number> barChart = (BarChart<String, Number>) scene.lookup("#histogram");
+
+        barChart.setLegendVisible(false);
+        barChart.setAnimated(false);
+
+        barChart.getXAxis().setLabel("Position");
+        barChart.getYAxis().setLabel("Visits");
+
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Visits");
+        for (int i = 0; i < 5; i++) {
+            series.getData().add(new XYChart.Data<>((topFive[i].getxPosition() + "," + topFive[i].getyPosition()), topFive[i].getAmountOfVisits()));
+        }
+
+        barChart.getData().setAll(series);
+        barChart.setBarGap(1);
+
+    }
+
+    private void setUpPercentageCoverage(Scene scene, String focus) {
+        double percentage = statAnalyser.getPercentageCoverageOfPaths(focus);
+        TextField txtFieldPercentage = (TextField) scene.lookup("#txtPercentCovOfPaths");
+
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+
+        txtFieldPercentage.setText(df.format(percentage) + "%");
+    }
+
+    private void setUpTopThreeHotspots(Scene scene) {
+        Position[] topFive = statAnalyser.getTopFivePixel("all");
+        TextField txtTopThreeHotspots = (TextField) scene.lookup("#txtTopThreeHotspots");
+        txtTopThreeHotspots.setText("(" + topFive[0].getxPosition() + "," + topFive[0].getyPosition() + ")  "
+                + "(" + topFive[1].getxPosition() + "," + topFive[1].getyPosition() + ")  "
+                + "(" + topFive[2].getxPosition() + "," + topFive[2].getyPosition() + ")");
+    }
+
+    private void generateAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
         alert.setContentText(contentText);
         alert.show();
     }
-    
+
+    private void resetGrid(ZoomableCanvas canvas) {
+        canvas.setScale(1);
+        canvas.setMiddleX(canvas.getWidthOfWholeCanvas() / 2);
+        canvas.setMiddleY(canvas.getHeightOfWholeCanvas() / 2);
+        Platform.runLater(() -> canvas.drawCanvas(canvas.getWidthOfWholeCanvas() / 2 - (int) canvas.getWidth() / 2, canvas.getHeightOfWholeCanvas() / 2 - (int) canvas.getHeight() / 2));
+    }
+
+    private void centerGrid(ZoomableCanvas canvas) {
+        double scale = canvas.getScale();
+        canvas.setMiddleX(canvas.getWidthOfWholeCanvas() / 2);
+        canvas.setMiddleY(canvas.getHeightOfWholeCanvas() / 2);
+        Platform.runLater(() -> canvas.drawCanvas(canvas.getWidthOfWholeCanvas() / 2 - (int) (canvas.getWidth() / scale / 2), canvas.getHeightOfWholeCanvas() / 2 - (int) (canvas.getHeight() / scale / 2)));
+    }
+
+    private void setUpRatioLeftAndRightTurns(Scene scene) throws SQLException {
+        PieChart pieChart = (PieChart) scene.lookup("#piechart");
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("Right-turns", statAnalyser.getRatioOfRightTurns()),
+                new PieChart.Data("Left-turns", statAnalyser.getRatioOfLeftTurns())
+        );
+        pieChart.setData(pieChartData);
+        pieChart.setLegendVisible(true);
+        pieChart.setLabelsVisible(false);
+        pieChart.setStartAngle(90);
+
+        Label lblRightTurns = (Label) scene.lookup("#pieChartCaptionRightTurns");
+        Label lblLeftTurns = (Label) scene.lookup("#pieChartCaptionLeftTurns");
+
+        lblRightTurns.setText(String.valueOf(Math.round(statAnalyser.getRatioOfRightTurns())) + "%");
+        lblRightTurns.setVisible(true);
+        lblLeftTurns.setText(String.valueOf(Math.round(statAnalyser.getRatioOfLeftTurns())) + "%");
+        lblLeftTurns.setVisible(true);
+    }
+
+    private void templatingDragAndDropHandler(Scene scene){
+        TreeView<String> treeView = (TreeView<String>) scene.lookup("#treeRules");
+    }
 }

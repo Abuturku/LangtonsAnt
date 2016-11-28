@@ -1,0 +1,8 @@
+# File: ~/sqltool.rc
+# =====
+# Connect to testdb on localhost as SA (no password initially):
+urlid 127.0.0.1-ant
+url jdbc:hsqldb:hsql://127.0.0.1/langtonsAnt
+username Ant
+password elefant123
+# =====

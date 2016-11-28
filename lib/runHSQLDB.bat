@@ -1,0 +1,1 @@
+java -cp hsqldb.jar org.hsqldb.server.Server --props HSQLDB/server.properties
