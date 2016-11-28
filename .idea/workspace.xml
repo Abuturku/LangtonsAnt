@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db2ce4c9-69cb-4d67-bc4a-05eadc904284" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/HSQLDB/server.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/HSQLDB/sqltool.rc" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/runHSQLDB.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/application/Application.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/application/Position.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/application/StatisticalAnalysisEngine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/application/TemplatingEngine.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/DragContext.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/SceneGestures.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/ZoomableCanvas.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/hsqldb/MovementRow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="db2ce4c9-69cb-4d67-bc4a-05eadc904284" name="Default" comment="Implemented a few functions here and there">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/LangtonsAnt/de/andreasschick/langton/gui/GUI.fxml" afterPath="$PROJECT_DIR$/out/production/LangtonsAnt/de/andreasschick/langton/gui/GUI.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/andreasschick/langton/application/Ant.java" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/application/Ant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/GUI.fxml" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/GUI.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/andreasschick/langton/hsqldb/HSQLDB.java" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/hsqldb/HSQLDB.java" />
     </list>
     <ignored path="LangtonsAnt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -154,8 +136,8 @@
       <file leaf-file-name="TemplatingEngine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/TemplatingEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+            <state relative-caret-position="511">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -724,11 +706,19 @@
       <option name="presentableId" value="Default" />
       <updated>1478352158087</updated>
     </task>
+    <task id="LOCAL-00001" summary="Implemented a few functions here and there">
+      <created>1480362284422</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1480362284422</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -745,7 +735,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20260416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20260416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -770,6 +760,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented a few functions here and there" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented a few functions here and there" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1255,8 +1249,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/TemplatingEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="15" column="41" lean-forward="true" selection-start-line="15" selection-start-column="41" selection-end-line="15" selection-end-column="41" />
+        <state relative-caret-position="511">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
