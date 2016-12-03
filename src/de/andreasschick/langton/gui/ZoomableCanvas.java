@@ -3,6 +3,7 @@ package de.andreasschick.langton.gui;
 import de.andreasschick.langton.application.Ant;
 import de.andreasschick.langton.application.Position;
 import de.andreasschick.langton.hsqldb.MovementRow;
+import javafx.application.Platform;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -74,7 +75,7 @@ public class ZoomableCanvas extends Canvas {
         gc.fillRect(0, 0, this.getWidth(), this.getHeight());
         gc.setFont(new Font(scale * FONT_SIZE));
 
-        int verticalPixel = 0, horizontalPixel = 0;
+        int verticalPixel, horizontalPixel = 0;
         for (int x = 0; x < this.getWidth(); x += scale) {
             verticalPixel = 0;
             for (int y = 0; y < this.getHeight(); y += scale) {
@@ -189,6 +190,7 @@ public class ZoomableCanvas extends Canvas {
                                 gc.setFill(Color.ORANGE);
                                 gc.fillRect(x + (0.5 * scale), y + (0.5 * scale), 0.5 * scale, 0.5 * scale);
 
+                                gc.setFill(Color.WHITE);
                                 gc.fillText(String.valueOf(amountOfVisits[3][horizontalPixel + startX][verticalPixel + startY]),
                                         x + HORIZONTAL_OFFSET_TEXT * scale, y + VERTICAL_OFFSET_TEXT_MORETHAN2ANTS * scale);
                             }
@@ -317,5 +319,22 @@ public class ZoomableCanvas extends Canvas {
         }
 
         initStateOfPixels(stateOfPixels.length, stateOfPixels.length);
+    }
+
+    public void unfocusAllPixel() {
+        for (int x = 0; x < stateOfPixels.length; x++){
+            for (int y = 0; y < stateOfPixels[x].length; y++){
+                for (int ant = 0; ant < numberOfAnts; ant++){
+                    if (amountOfVisits[ant][x][y] > 0){
+                        stateOfPixels[x][y] = 5;
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void redraw() {
+        Platform.runLater(() -> drawCanvas(this.getMiddleX()-(int)this.getWidth()/scale/2, this.getMiddleY()-(int)this.getHeight()/scale/2));
     }
 }

@@ -78,20 +78,18 @@ public class GraphicalUserInterface extends Application {
         resetGridButton.setOnAction(event -> resetGrid(zoomableCanvas));
         
         ChoiceBox<String> cbApplication = (ChoiceBox<String>)scene.lookup("#cbApplication");
-        cbApplication.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
-        	public void changed(ObservableValue ov, Number value, Number new_value){
-        		int applicationId = new_value.intValue()+OFFSET_APPLICATIONID;
-        		try {
-					application = HSQLDB.getInstance().getApplication(applicationId);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-        		zoomableCanvas.setWidthOfWholeCanvas(application.getTableauSize());
-        		zoomableCanvas.setHeightOfWholeCanvas(application.getTableauSize());
-        		zoomableCanvas.setNumberOfAnts(application.getNumberOfAnts());
-        		setUpChoiceBox(scene);
-        	}
-		});
+        cbApplication.getSelectionModel().selectedIndexProperty().addListener((ov, value, new_value) -> {
+            int applicationId = new_value.intValue()+OFFSET_APPLICATIONID;
+            try {
+                application = HSQLDB.getInstance().getApplication(applicationId);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            zoomableCanvas.setWidthOfWholeCanvas(application.getTableauSize());
+            zoomableCanvas.setHeightOfWholeCanvas(application.getTableauSize());
+            zoomableCanvas.setNumberOfAnts(application.getNumberOfAnts());
+            setUpChoiceBox(scene);
+        });
 
 
 
@@ -146,8 +144,7 @@ public class GraphicalUserInterface extends Application {
 
         //Setting entries for TreeView
         setUpTreeView(scene);
-        
-        
+
 
         //primaryStage.setResizable(false);
         primaryStage.setScene(scene);
@@ -280,7 +277,7 @@ public class GraphicalUserInterface extends Application {
         setUpTopThreeHotspots(scene);
 
 
-        templatingEngine = new TemplatingEngine(scene);
+        templatingEngine = new TemplatingEngine(zoomableCanvas, application);
 
     }
 

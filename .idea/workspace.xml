@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db2ce4c9-69cb-4d67-bc4a-05eadc904284" name="Default" comment="Implemented a few functions here and there">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/application/Template.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/HSQLDB/hsqldb-catalogs/langtonsAnt.log" afterPath="$PROJECT_DIR$/lib/HSQLDB/hsqldb-catalogs/langtonsAnt.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/HSQLDB/hsqldb-catalogs/langtonsAnt.properties" afterPath="$PROJECT_DIR$/lib/HSQLDB/hsqldb-catalogs/langtonsAnt.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/andreasschick/langton/application/TemplatingEngine.java" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/application/TemplatingEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/ZoomableCanvas.java" afterPath="$PROJECT_DIR$/src/de/andreasschick/langton/gui/ZoomableCanvas.java" />
     </list>
     <ignored path="LangtonsAnt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +35,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1309">
               <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -38,7 +47,13 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="28" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1626#1627#0" expanded="false" />
+                <element signature="e#1666#1667#0" expanded="false" />
+                <element signature="e#1706#1707#0" expanded="false" />
+                <element signature="e#1745#1746#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,6 +64,18 @@
             <state relative-caret-position="289">
               <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
               <folding>
+                <element signature="e#104#105#0" expanded="false" />
+                <element signature="e#136#137#0" expanded="false" />
+                <element signature="e#171#172#0" expanded="false" />
+                <element signature="e#203#204#0" expanded="false" />
+                <element signature="e#252#253#0" expanded="false" />
+                <element signature="e#294#295#0" expanded="false" />
+                <element signature="e#343#344#0" expanded="false" />
+                <element signature="e#385#386#0" expanded="false" />
+                <element signature="e#444#445#0" expanded="false" />
+                <element signature="e#496#497#0" expanded="false" />
+                <element signature="e#536#537#0" expanded="false" />
+                <element signature="e#573#574#0" expanded="false" />
                 <marker date="1480325520954" expanded="true" signature="1075:1076" ph="{...}" />
               </folding>
             </state>
@@ -60,25 +87,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MovementRow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/hsqldb/MovementRow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
               <folding>
-                <element signature="e#441#442#0" expanded="false" />
-                <element signature="e#469#470#0" expanded="false" />
-                <element signature="e#502#503#0" expanded="false" />
-                <element signature="e#534#535#0" expanded="false" />
-                <element signature="e#567#568#0" expanded="false" />
-                <element signature="e#599#600#0" expanded="false" />
-                <element signature="e#636#637#0" expanded="false" />
-                <element signature="e#672#673#0" expanded="false" />
+                <element signature="e#487#488#0" expanded="false" />
+                <element signature="e#522#523#0" expanded="false" />
+                <element signature="e#561#562#0" expanded="false" />
+                <element signature="e#596#597#0" expanded="false" />
+                <element signature="e#631#632#0" expanded="false" />
+                <element signature="e#665#666#0" expanded="false" />
+                <element signature="e#691#692#0" expanded="false" />
+                <element signature="e#716#717#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -104,16 +121,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphicalUserInterface.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GraphicalUserInterface.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="132" column="65" lean-forward="true" selection-start-line="132" selection-start-column="65" selection-end-line="132" selection-end-column="65" />
-              <folding>
-                <element signature="e#7096#7126#0" expanded="true" />
-                <element signature="e#7854#7884#0" expanded="true" />
-                <element signature="e#9042#9072#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="663">
+              <caret line="82" column="17" lean-forward="true" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -121,25 +134,81 @@
       <file leaf-file-name="ZoomableCanvas.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/ZoomableCanvas.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="256" column="5" lean-forward="false" selection-start-line="256" selection-start-column="5" selection-end-line="256" selection-end-column="5" />
+            <state relative-caret-position="4845">
+              <caret line="328" column="48" lean-forward="false" selection-start-line="328" selection-start-column="48" selection-end-line="328" selection-end-column="48" />
               <folding>
-                <element signature="e#11624#11625#0" expanded="true" />
-                <element signature="e#11679#11680#0" expanded="true" />
-                <element signature="e#11923#11924#0" expanded="true" />
-                <element signature="e#11989#11990#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#10907#10908#0" expanded="false" />
+                <element signature="e#10935#10936#0" expanded="false" />
+                <element signature="e#10967#10968#0" expanded="false" />
+                <element signature="e#11001#11002#0" expanded="false" />
+                <element signature="e#11025#11026#0" expanded="false" />
+                <element signature="e#11055#11056#0" expanded="false" />
+                <element signature="e#11079#11080#0" expanded="false" />
+                <element signature="e#11109#11110#0" expanded="false" />
+                <element signature="e#11145#11146#0" expanded="false" />
+                <element signature="e#11183#11184#0" expanded="false" />
+                <element signature="e#11219#11220#0" expanded="false" />
+                <element signature="e#11257#11258#0" expanded="false" />
+                <element signature="e#11299#11300#0" expanded="false" />
+                <element signature="e#11340#11341#0" expanded="false" />
+                <element signature="e#11383#11384#0" expanded="false" />
+                <element signature="e#11425#11426#0" expanded="false" />
+                <element signature="e#11461#11462#0" expanded="false" />
+                <element signature="e#11496#11497#0" expanded="false" />
+                <element signature="e#11549#11550#0" expanded="false" />
+                <element signature="e#11586#11587#0" expanded="false" />
+                <element signature="e#11618#11619#0" expanded="false" />
+                <element signature="e#11648#11649#0" expanded="false" />
+                <element signature="e#12587#12588#0" expanded="false" />
+                <element signature="e#12647#12648#0" expanded="false" />
+                <element signature="e#12714#12715#0" expanded="false" />
+                <element signature="e#12776#12777#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TemplatingEngine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SceneGestures.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/SceneGestures.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1275">
+              <caret line="88" column="21" lean-forward="false" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="73" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#595#596#0" expanded="false" />
+                <element signature="e#631#632#0" expanded="false" />
+                <element signature="e#695#696#0" expanded="false" />
+                <element signature="e#744#745#0" expanded="false" />
+                <element signature="e#808#809#0" expanded="false" />
+                <element signature="e#857#858#0" expanded="false" />
+                <element signature="e#916#917#0" expanded="false" />
+                <element signature="e#959#960#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TemplatingEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/TemplatingEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="722">
+              <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Template.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Template.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#185#186#0" expanded="true" />
+                <element signature="e#227#228#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,6 +223,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>templating</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -183,6 +257,7 @@
         <option value="$PROJECT_DIR$/src/de/andreasschick/langton/application/Position.java" />
         <option value="$PROJECT_DIR$/src/de/andreasschick/langton/application/StatisticalAnalysisEngine.java" />
         <option value="$PROJECT_DIR$/src/de/andreasschick/langton/gui/ZoomableCanvas.java" />
+        <option value="$PROJECT_DIR$/src/de/andreasschick/langton/application/Template.java" />
         <option value="$PROJECT_DIR$/src/de/andreasschick/langton/application/TemplatingEngine.java" />
         <option value="$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java" />
       </list>
@@ -210,7 +285,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -323,6 +397,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LangtonsAnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LangtonsAnt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -348,6 +436,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -359,6 +448,11 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="de.andreasschick.langton.application" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.GraphicalUserInterface">
     <configuration default="false" name="DatabaseManagerSwing" type="Application" factoryName="Application" singleton="true" temporary="true">
@@ -717,20 +811,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266385" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5030257" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3128964" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769555" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3128964" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -740,15 +833,34 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39807898" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39807898" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266385" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266385" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -781,35 +893,23 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/hsqldb/HSQLDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="18" lean-forward="false" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#7096#7126#0" expanded="true" />
-            <element signature="e#7854#7884#0" expanded="true" />
-            <element signature="e#9042#9072#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GUI.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1581">
           <caret line="93" column="16" lean-forward="false" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Ant.java">
@@ -834,7 +934,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="18" lean-forward="false" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -842,23 +944,67 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#7096#7126#0" expanded="true" />
-            <element signature="e#7854#7884#0" expanded="true" />
-            <element signature="e#9042#9072#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GUI.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1377">
           <caret line="81" column="14" lean-forward="false" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Scenario.java" />
+    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Ant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#634#635#0" expanded="false" />
+            <element signature="e#653#654#0" expanded="false" />
+            <element signature="e#709#710#0" expanded="false" />
+            <element signature="e#741#742#0" expanded="false" />
+            <element signature="e#771#772#0" expanded="false" />
+            <element signature="e#800#801#0" expanded="false" />
+            <element signature="e#830#831#0" expanded="false" />
+            <element signature="e#859#860#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/hsqldb/HSQLDB.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="18" lean-forward="false" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GUI.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1343">
+          <caret line="79" column="14" lean-forward="false" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Scenario.java" />
@@ -884,7 +1030,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="18" lean-forward="false" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -892,23 +1040,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#7096#7126#0" expanded="true" />
-            <element signature="e#7854#7884#0" expanded="true" />
-            <element signature="e#9042#9072#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GUI.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1343">
           <caret line="79" column="14" lean-forward="false" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Scenario.java" />
@@ -934,57 +1078,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="18" lean-forward="false" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#7096#7126#0" expanded="true" />
-            <element signature="e#7854#7884#0" expanded="true" />
-            <element signature="e#9042#9072#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GUI.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="79" column="14" lean-forward="false" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Scenario.java" />
-    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Ant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#634#635#0" expanded="false" />
-            <element signature="e#653#654#0" expanded="false" />
-            <element signature="e#709#710#0" expanded="false" />
-            <element signature="e#741#742#0" expanded="false" />
-            <element signature="e#771#772#0" expanded="false" />
-            <element signature="e#800#801#0" expanded="false" />
-            <element signature="e#830#831#0" expanded="false" />
-            <element signature="e#859#860#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/hsqldb/HSQLDB.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="18" lean-forward="false" selection-start-line="41" selection-start-column="18" selection-end-line="41" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -992,23 +1088,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#7096#7126#0" expanded="true" />
-            <element signature="e#7854#7884#0" expanded="true" />
-            <element signature="e#9042#9072#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GUI.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1343">
           <caret line="79" column="14" lean-forward="false" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Scenario.java" />
@@ -1034,7 +1126,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1061,11 +1155,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="e#7096#7126#0" expanded="true" />
-            <element signature="e#7854#7884#0" expanded="true" />
-            <element signature="e#9042#9072#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1100,14 +1190,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GUI.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1819">
           <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LangtonsAnt.iml">
@@ -1158,18 +1248,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/SceneGestures.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="72" />
-          <folding>
-            <marker date="1480177192545" expanded="true" signature="2602:3301" ph="{...}" />
-            <marker date="1480177192545" expanded="true" signature="2668:3295" ph="{...}" />
-            <marker date="1480177192545" expanded="true" signature="3355:3547" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Ant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1192,7 +1270,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1309">
           <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1201,6 +1281,18 @@
         <state relative-caret-position="289">
           <caret line="29" column="26" lean-forward="false" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
           <folding>
+            <element signature="e#104#105#0" expanded="false" />
+            <element signature="e#136#137#0" expanded="false" />
+            <element signature="e#171#172#0" expanded="false" />
+            <element signature="e#203#204#0" expanded="false" />
+            <element signature="e#252#253#0" expanded="false" />
+            <element signature="e#294#295#0" expanded="false" />
+            <element signature="e#343#344#0" expanded="false" />
+            <element signature="e#385#386#0" expanded="false" />
+            <element signature="e#444#445#0" expanded="false" />
+            <element signature="e#496#497#0" expanded="false" />
+            <element signature="e#536#537#0" expanded="false" />
+            <element signature="e#573#574#0" expanded="false" />
             <marker date="1480325520954" expanded="true" signature="1075:1076" ph="{...}" />
           </folding>
         </state>
@@ -1210,7 +1302,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="32" lean-forward="false" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding />
+          <folding>
+            <element signature="e#487#488#0" expanded="false" />
+            <element signature="e#522#523#0" expanded="false" />
+            <element signature="e#561#562#0" expanded="false" />
+            <element signature="e#596#597#0" expanded="false" />
+            <element signature="e#631#632#0" expanded="false" />
+            <element signature="e#665#666#0" expanded="false" />
+            <element signature="e#691#692#0" expanded="false" />
+            <element signature="e#716#717#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1218,42 +1319,96 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1626#1627#0" expanded="false" />
+            <element signature="e#1666#1667#0" expanded="false" />
+            <element signature="e#1706#1707#0" expanded="false" />
+            <element signature="e#1745#1746#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/SceneGestures.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="88" column="21" lean-forward="false" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="73" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#595#596#0" expanded="false" />
+            <element signature="e#631#632#0" expanded="false" />
+            <element signature="e#695#696#0" expanded="false" />
+            <element signature="e#744#745#0" expanded="false" />
+            <element signature="e#808#809#0" expanded="false" />
+            <element signature="e#857#858#0" expanded="false" />
+            <element signature="e#916#917#0" expanded="false" />
+            <element signature="e#959#960#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/ZoomableCanvas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="256" column="5" lean-forward="false" selection-start-line="256" selection-start-column="5" selection-end-line="256" selection-end-column="5" />
+        <state relative-caret-position="4845">
+          <caret line="328" column="48" lean-forward="false" selection-start-line="328" selection-start-column="48" selection-end-line="328" selection-end-column="48" />
           <folding>
-            <element signature="e#11624#11625#0" expanded="true" />
-            <element signature="e#11679#11680#0" expanded="true" />
-            <element signature="e#11923#11924#0" expanded="true" />
-            <element signature="e#11989#11990#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#10907#10908#0" expanded="false" />
+            <element signature="e#10935#10936#0" expanded="false" />
+            <element signature="e#10967#10968#0" expanded="false" />
+            <element signature="e#11001#11002#0" expanded="false" />
+            <element signature="e#11025#11026#0" expanded="false" />
+            <element signature="e#11055#11056#0" expanded="false" />
+            <element signature="e#11079#11080#0" expanded="false" />
+            <element signature="e#11109#11110#0" expanded="false" />
+            <element signature="e#11145#11146#0" expanded="false" />
+            <element signature="e#11183#11184#0" expanded="false" />
+            <element signature="e#11219#11220#0" expanded="false" />
+            <element signature="e#11257#11258#0" expanded="false" />
+            <element signature="e#11299#11300#0" expanded="false" />
+            <element signature="e#11340#11341#0" expanded="false" />
+            <element signature="e#11383#11384#0" expanded="false" />
+            <element signature="e#11425#11426#0" expanded="false" />
+            <element signature="e#11461#11462#0" expanded="false" />
+            <element signature="e#11496#11497#0" expanded="false" />
+            <element signature="e#11549#11550#0" expanded="false" />
+            <element signature="e#11586#11587#0" expanded="false" />
+            <element signature="e#11618#11619#0" expanded="false" />
+            <element signature="e#11648#11649#0" expanded="false" />
+            <element signature="e#12587#12588#0" expanded="false" />
+            <element signature="e#12647#12648#0" expanded="false" />
+            <element signature="e#12714#12715#0" expanded="false" />
+            <element signature="e#12776#12777#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/Template.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="132" column="65" lean-forward="true" selection-start-line="132" selection-start-column="65" selection-end-line="132" selection-end-column="65" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#7096#7126#0" expanded="true" />
-            <element signature="e#7854#7884#0" expanded="true" />
-            <element signature="e#9042#9072#0" expanded="true" />
+            <element signature="e#185#186#0" expanded="true" />
+            <element signature="e#227#228#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/application/TemplatingEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="722">
+          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/andreasschick/langton/gui/GraphicalUserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="82" column="17" lean-forward="true" selection-start-line="82" selection-start-column="17" selection-end-line="82" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
