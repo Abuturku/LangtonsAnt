@@ -32,6 +32,7 @@ public class GraphicalUserInterface extends Application {
     private TemplatingEngine templatingEngine;
     private de.andreasschick.langton.application.Application application;
     private final short OFFSET_APPLICATIONID = 1;
+    public ProgressBar progressBar;
 
     public static void main(String[] args) {
         launch(args);
@@ -144,6 +145,8 @@ public class GraphicalUserInterface extends Application {
         //Setting entries for TreeView
         setUpTreeView(scene);
 
+        progressBar = (ProgressBar) scene.lookup("#progressBar");
+
 
         //primaryStage.setResizable(false);
         primaryStage.setScene(scene);
@@ -220,7 +223,10 @@ public class GraphicalUserInterface extends Application {
     	int selectedIndex = cbApplication.getSelectionModel().getSelectedIndex();
     	log.info("-----------------------------------------------------------");
     	log.info("Selected Application with applicationId = " + selectedIndex);
-    	
+
+    	progressBar.setProgress(0.2f);
+
+
         TextField txtNumberOfSteps = (TextField) scene.lookup("#txtNumberOfSteps");
         int numberOfSteps = -1;
         try {
@@ -234,7 +240,7 @@ public class GraphicalUserInterface extends Application {
         String focus = choiceBoxFocus.getSelectionModel().getSelectedItem();
         String selectedRule;
         log.info("Selected Focus: " + focus);
-
+        progressBar.setProgress(0.3f);
         try {
             TreeView<String> treeRules = (TreeView<String>) scene.lookup("#treeRules");
             selectedRule = treeRules.getSelectionModel().getSelectedItems().toString().substring(19).replaceAll("[ \t]*[a-z,]*", "").replace("]", "");
@@ -248,21 +254,37 @@ public class GraphicalUserInterface extends Application {
             generateAlert(Alert.AlertType.ERROR, "Error", "No rule selected or selected rule is invalid", "Please select a rule in Template register below");
         }
 
-
-        List<Ant> ants = null;
+        progressBar.setProgress(0.4f);
         try {
-            ants = HSQLDB.getInstance().getAllAnts(application.getId(), numberOfSteps);
+            final List<Ant> ants = HSQLDB.getInstance().getAllAnts(application.getId(), numberOfSteps);
+
+            Platform.runLater(() -> setUpAndDrawCanvas(zoomableCanvas, ants));
         } catch (SQLException e) {
             generateAlert(Alert.AlertType.ERROR, "Error", "Couldn't get all Ants for Application 1", "Please try again");
         }
 
+
+
+        final int finalNumberOfSteps = numberOfSteps;
+        Platform.runLater(() -> runStatisticalAnalysis(scene, focus, finalNumberOfSteps));
+
+
+        Platform.runLater(() -> {
+            templatingEngine = new TemplatingEngine(zoomableCanvas, application);
+            progressBar.setProgress(progressBar.getProgress() + 0.1f);
+        });
+    }
+
+    private void setUpAndDrawCanvas(ZoomableCanvas zoomableCanvas, List<Ant> ants){
         log.info("Setting up and drawing Canvas");
         zoomableCanvas.reset();
         zoomableCanvas.initializeStateOfPixels(ants);
-        Platform.runLater(() -> zoomableCanvas.drawCanvas(zoomableCanvas.getMiddleX() - (int) zoomableCanvas.getWidth() / zoomableCanvas.getScale() / 2,
-                zoomableCanvas.getMiddleY() - (int) zoomableCanvas.getHeight() / zoomableCanvas.getScale() / 2));
+        zoomableCanvas.drawCanvas(zoomableCanvas.getMiddleX() - (int) zoomableCanvas.getWidth() / zoomableCanvas.getScale() / 2,
+                zoomableCanvas.getMiddleY() - (int) zoomableCanvas.getHeight() / zoomableCanvas.getScale() / 2);
+        progressBar.setProgress(progressBar.getProgress() + 0.3f);
+    }
 
-        
+    private void runStatisticalAnalysis(Scene scene, String focus, int numberOfSteps){
         log.info("Running statistical Analysis");
         try {
             statAnalyser = new StatisticalAnalysisEngine(numberOfSteps, scene, application);
@@ -270,14 +292,11 @@ public class GraphicalUserInterface extends Application {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         setUpTopFivePixels(scene, focus);
         setUpPercentageCoverage(scene, focus);
         setUpTopThreeHotspots(scene);
-
-
-        templatingEngine = new TemplatingEngine(zoomableCanvas, application);
-
+        progressBar.setProgress(progressBar.getProgress() + 0.2f);
     }
 
     private void setUpTopFivePixels(Scene scene, String focus) {

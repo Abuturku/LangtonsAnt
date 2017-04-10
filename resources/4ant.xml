@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<template>
+  <ant id="0">
+    <position>
+      <xPosition>5003</xPosition>
+      <yPosition>5000</yPosition>
+      <amountOfVisits>37</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>5002</xPosition>
+      <yPosition>5001</yPosition>
+      <amountOfVisits>46</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>5001</xPosition>
+      <yPosition>5001</yPosition>
+      <amountOfVisits>52</amountOfVisits>
+    </position>
+  </ant>
+  <ant id="1">
+        <position>
+      <xPosition>5003</xPosition>
+      <yPosition>5000</yPosition>
+      <amountOfVisits>16</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>5002</xPosition>
+      <yPosition>5001</yPosition>
+      <amountOfVisits>18</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>5001</xPosition>
+      <yPosition>5001</yPosition>
+      <amountOfVisits>11</amountOfVisits>
+    </position>
+  </ant>
+  <ant id="2">
+        <position>
+      <xPosition>5003</xPosition>
+      <yPosition>5000</yPosition>
+      <amountOfVisits>22</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>5002</xPosition>
+      <yPosition>5001</yPosition>
+      <amountOfVisits>14</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>5001</xPosition>
+      <yPosition>5001</yPosition>
+      <amountOfVisits>11</amountOfVisits>
+    </position>
+  </ant>
+  <ant id="3">
+        <position>
+      <xPosition>5003</xPosition>
+      <yPosition>5000</yPosition>
+      <amountOfVisits>20</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>5002</xPosition>
+      <yPosition>5001</yPosition>
+      <amountOfVisits>22</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>5001</xPosition>
+      <yPosition>5001</yPosition>
+      <amountOfVisits>23</amountOfVisits>
+    </position>
+  </ant>
+</template>

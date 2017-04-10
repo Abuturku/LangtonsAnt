@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<template>
+  <ant id="0">
+    <position>
+      <xPosition>0</xPosition>
+      <yPosition>0</yPosition>
+      <amountOfVisits>1</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>1</xPosition>
+      <yPosition>1</yPosition>
+      <amountOfVisits>1</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>2</xPosition>
+      <yPosition>2</yPosition>
+      <amountOfVisits>2</amountOfVisits>
+    </position>
+  </ant>
+  <ant id="1">
+    <position>
+      <xPosition>3</xPosition>
+      <yPosition>3</yPosition>
+      <amountOfVisits>3</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>4</xPosition>
+      <yPosition>4</yPosition>
+      <amountOfVisits>4</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>5</xPosition>
+      <yPosition>5</yPosition>
+      <amountOfVisits>5</amountOfVisits>
+    </position>
+  </ant>
+  <ant id="2">
+    <position>
+      <xPosition>10</xPosition>
+      <yPosition>10</yPosition>
+      <amountOfVisits>1</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>20</xPosition>
+      <yPosition>30</yPosition>
+      <amountOfVisits>1</amountOfVisits>
+    </position>
+    <position>
+      <xPosition>4980</xPosition>
+      <yPosition>5010</yPosition>
+      <amountOfVisits>2837</amountOfVisits>
+    </position>
+  </ant>
+</template>

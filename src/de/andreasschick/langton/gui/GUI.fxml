@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -110,5 +111,6 @@
          </padding>
       </Label>
       <ChoiceBox fx:id="cbApplication" layoutX="200.0" layoutY="12.0" prefHeight="25.0" prefWidth="360.0" />
+      <ProgressBar fx:id="progressBar" layoutX="708.0" layoutY="60.0" prefHeight="18.0" prefWidth="500.0" progress="0.0" />
    </children>
 </AnchorPane>
