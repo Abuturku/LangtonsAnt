@@ -7,11 +7,8 @@ import de.andreasschick.langton.application.TemplatingEngine;
 import de.andreasschick.langton.hsqldb.HSQLDB;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -109,6 +106,8 @@ public class GraphicalUserInterface extends Application {
             event.consume();
         });
 
+        ChoiceBox<String> choiceBoxFocus = (ChoiceBox<String>) scene.lookup("#choiceBoxFocus");
+
         zoomableCanvas.setOnDragDropped(event -> {
             Dragboard db = event.getDragboard();
             boolean success = false;
@@ -120,15 +119,15 @@ public class GraphicalUserInterface extends Application {
                         break;
                     case "2":
                         log.info("Searching for template, defined in XML without numbers");
-                        templatingEngine.searchForXMLTemplate();
+                        templatingEngine.searchForXMLTemplate(false);
                         break;
                     case "3":
                         log.info("Searching for template, defined in XML with numbers");
-                        templatingEngine.searchForXMLTemplateWithNumbers();
+                        templatingEngine.searchForXMLTemplate(true);
                         break;
                     case "4":
                         log.info("Searching for longest drift to edges");
-                        templatingEngine.searchForLongestDrift();
+                        templatingEngine.searchForLongestDrift(choiceBoxFocus.getSelectionModel().getSelectedItem());
                         break;
                     default:
                         break;
@@ -205,7 +204,7 @@ public class GraphicalUserInterface extends Application {
 
         //Setting ChangeListener to TreeView using Lambda-Expression
         treeRules.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            TreeItem<String> selectedItem = (TreeItem<String>) newValue;
+            TreeItem<String> selectedItem = newValue;
             //String selectedText = selectedItem.getValue().replaceAll("[ \t]*[a-z,]*", "");
 
         });
@@ -232,8 +231,8 @@ public class GraphicalUserInterface extends Application {
         }
         
         ChoiceBox<String> choiceBoxFocus = (ChoiceBox<String>) scene.lookup("#choiceBoxFocus");
-        String focus = choiceBoxFocus.getSelectionModel().getSelectedItem().toString();
-        String selectedRule = null;
+        String focus = choiceBoxFocus.getSelectionModel().getSelectedItem();
+        String selectedRule;
         log.info("Selected Focus: " + focus);
 
         try {
@@ -321,7 +320,7 @@ public class GraphicalUserInterface extends Application {
                 + "(" + topFive[2].getxPosition() + "," + topFive[2].getyPosition() + ")");
     }
 
-    private void generateAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
+    public static void generateAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
