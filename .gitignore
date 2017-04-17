@@ -62,7 +62,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-.idea/
+.idea/*
 lib/*
 out/
 logs
