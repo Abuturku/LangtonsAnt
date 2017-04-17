@@ -10,18 +10,6 @@ public class Position {
         return yPosition;
     }
 
-    public void setxPosition(short xPosition) {
-        this.xPosition = xPosition;
-    }
-
-    public void setyPosition(short yPosition) {
-        this.yPosition = yPosition;
-    }
-
-    public void setAmountOfVisits(short amountOfVisits) {
-        this.amountOfVisits = amountOfVisits;
-    }
-
     public short getAmountOfVisits() {
         return amountOfVisits;
     }

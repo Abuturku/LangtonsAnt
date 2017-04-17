@@ -43,7 +43,7 @@ public class ZoomableCanvas extends Canvas {
 
     private int scale = 1;
 
-    ZoomableCanvas(int width, int height, byte numberOfAnts) {
+    public ZoomableCanvas(int width, int height, byte numberOfAnts) {
         this.setHeight(500);
         this.setWidth(500);
         this.middleX = width / 2;
@@ -56,7 +56,12 @@ public class ZoomableCanvas extends Canvas {
         ZoomableCanvas.amountOfVisits = new short[numberOfAnts][width][height];
 
         initStateOfPixels(width, height);
-        drawCanvas(width / 2 - 250, height / 2 - 250);
+        try {
+            drawCanvas(width / 2 - 250, height / 2 - 250);
+        }catch (RuntimeException e){
+
+        }
+
 
     }
 

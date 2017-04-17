@@ -287,7 +287,8 @@ public class GraphicalUserInterface extends Application {
     private void runStatisticalAnalysis(Scene scene, String focus, int numberOfSteps){
         log.info("Running statistical Analysis");
         try {
-            statAnalyser = new StatisticalAnalysisEngine(numberOfSteps, scene, application);
+            ChoiceBox<String> choiceBox = (ChoiceBox<String>) scene.lookup("#choiceBoxFocus");
+            statAnalyser = new StatisticalAnalysisEngine(numberOfSteps, String.valueOf(choiceBox.getSelectionModel().getSelectedIndex()), application.getNumberOfAnts(), application.getId());
             setUpRatioLeftAndRightTurns(scene);
         } catch (SQLException e) {
             e.printStackTrace();

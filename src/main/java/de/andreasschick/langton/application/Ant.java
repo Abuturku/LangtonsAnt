@@ -19,19 +19,8 @@ public class Ant {
         movements = hsqldb.getAntMovements(antId, applicationId, maxStep);
     }
 
-    public int getAntId() {
-		return antId;
-	}
-    
     public ArrayList<MovementRow> getMovements() {
         return movements;
     }
 
-    public int getStartX() {
-        return startX;
-    }
-
-    public int getStartY() {
-        return startY;
-    }
 }

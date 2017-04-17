@@ -9,37 +9,32 @@ import java.sql.SQLException;
 public class StatisticalAnalysisEngine {
     private int countOfRightTurns;
     private int countOfLeftTurns;
-    Scene scene;
-    Application application;
-    private int maxStep;
+    private short[][][] amountOfVisits;
 
-    public StatisticalAnalysisEngine(int maxStep, Scene scene, Application application) throws SQLException {
-        this.maxStep = maxStep;
-        this.scene = scene;
-        this.application = application;
-        ChoiceBox<String> choiceBox = (ChoiceBox<String>) scene.lookup("#choiceBoxFocus");
-        if (choiceBox.getSelectionModel().getSelectedIndex() == 0) {
+    public StatisticalAnalysisEngine(int maxStep, String focus, byte numberOfAnts, int applicationId) throws SQLException {
+        if (focus.equals("0")) {
             this.countOfLeftTurns = 0;
             this.countOfRightTurns = 0;
-            for (int i = 1; i <= application.getNumberOfAnts(); i++) {
-                this.countOfLeftTurns += HSQLDB.getInstance().getCountOfLeftTurns(i, application.getId(), maxStep);
-                this.countOfRightTurns += HSQLDB.getInstance().getCountOfRightTurns(i, application.getId(), maxStep);
+            for (int i = 1; i <= numberOfAnts; i++) {
+                this.countOfLeftTurns += HSQLDB.getInstance().getCountOfLeftTurns(i, applicationId, maxStep);
+                this.countOfRightTurns += HSQLDB.getInstance().getCountOfRightTurns(i, applicationId, maxStep);
             }
         } else {
+            System.out.println(Integer.valueOf(focus));
             this.countOfLeftTurns = HSQLDB.getInstance().getCountOfLeftTurns(
-                    choiceBox.getSelectionModel().getSelectedIndex(), application.getId(), maxStep);
+                    Integer.valueOf(focus),applicationId, maxStep);
             this.countOfRightTurns = HSQLDB.getInstance().getCountOfRightTurns(
-                    choiceBox.getSelectionModel().getSelectedIndex(), application.getId(), maxStep);
+                    Integer.valueOf(focus), applicationId, maxStep);
         }
 
+        if (amountOfVisits != null){
+            this.amountOfVisits = ZoomableCanvas.getAmountOfVisits();
+        }
     }
 
-    public int getCountOfRightTurns() {
-        return countOfRightTurns;
-    }
-
-    public int getCountOfLeftTurns() {
-        return countOfLeftTurns;
+    public StatisticalAnalysisEngine(int maxStep, String focus, byte numberOfAnts, int applicationId, short[][][] amountOfVisits) throws SQLException {
+        this(maxStep, focus, numberOfAnts, applicationId);
+        this.amountOfVisits = amountOfVisits;
     }
 
     public double getRatioOfRightTurns() {
@@ -84,7 +79,7 @@ public class StatisticalAnalysisEngine {
 
     }
 
-    private int[][] sumUpAmountOfVisits(short[][][] amountOfVisits, String focus) {
+    public int[][] sumUpAmountOfVisits(short[][][] amountOfVisits, String focus) {
         int[][] sum = new int[amountOfVisits[0].length][amountOfVisits[0][0].length];
         int start = 0, end = amountOfVisits.length;
 
@@ -116,7 +111,7 @@ public class StatisticalAnalysisEngine {
         return sum;
     }
 
-    private int[][] sumUpAmountOfVisits(short[][][] amountOfVisits) {
+    public int[][] sumUpAmountOfVisits(short[][][] amountOfVisits) {
         int[][] sum = new int[amountOfVisits[0].length][amountOfVisits[0][0].length];
         int start = 0, end = amountOfVisits.length;
 
