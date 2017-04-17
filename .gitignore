@@ -62,12 +62,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-.idea
-lib/HSQLDB/hsqldb-catalogs/langtonsAnt.lck
-.idea/workspace.xml
-out/production/LangtonsAnt/de/andreasschick/langton/gui/style.css
-.idea/workspace.xml
-lib/*
-out/*
 .idea/*
+lib/*
+out/
 logs
