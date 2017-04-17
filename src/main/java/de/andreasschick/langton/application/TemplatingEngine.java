@@ -363,19 +363,20 @@ public class TemplatingEngine {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         try {
+            ClassLoader classLoader = getClass().getClassLoader();
             DocumentBuilder db = dbf.newDocumentBuilder();
             switch (application.getNumberOfAnts()) {
                 case 1:
-                    doc = db.parse("resources/1ant.xml");
+                    doc = db.parse(classLoader.getResourceAsStream("templates/1ant.xml"));
                     break;
                 case 2:
-                    doc = db.parse("resources/2ant.xml");
+                    doc = db.parse(classLoader.getResourceAsStream("templates/2ant.xml"));
                     break;
                 case 3:
-                    doc = db.parse("resources/3ant.xml");
+                    doc = db.parse(classLoader.getResourceAsStream("templates/3ant.xml"));
                     break;
                 case 4:
-                    doc = db.parse("resources/4ant.xml");
+                    doc = db.parse(classLoader.getResourceAsStream("templates/4ant.xml"));
                     break;
             }
         } catch (SAXException | IOException | ParserConfigurationException e) {

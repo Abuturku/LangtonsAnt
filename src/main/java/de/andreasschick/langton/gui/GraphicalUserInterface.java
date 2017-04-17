@@ -165,7 +165,7 @@ public class GraphicalUserInterface extends Application {
 		
 		List<String> items = new ArrayList<>();
 		
-		for (de.andreasschick.langton.application.Application appl : applList) {			
+		for (de.andreasschick.langton.application.Application appl : applList) {
 			items.add(appl.getId() + " - " + appl.getMovementRule() + " - " + appl.getNumberOfAnts() + " Ant" + (appl.getNumberOfAnts() > 1 ? "s" : "") + " - Grid: " + appl.getTableauSize() + "x" + appl.getTableauSize());
 		}
 		
